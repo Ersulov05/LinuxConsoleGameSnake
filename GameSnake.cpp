@@ -127,18 +127,29 @@ std::pair<int, int> getNewPosAppleConsideringPositionSnake(Snake &snake)
     return newPos;
 }
 
-bool GameLoop(Config config)
+void initConsoleSettingsWithKeyboard()
 {
     initscr();             // Инициализация ncurses
     cbreak();              // Отключение буферизации ввода
     noecho();              // Отключение отображения нажатых клавиш
     nodelay(stdscr, TRUE); // Устанавливаем нон-блокирующий режим
     keypad(stdscr, TRUE); // Включаем поддержку функциональных клавиш и стрелок
+}
+
+bool GameLoop(Config config)
+{
+    initConsoleSettingsWithKeyboard();
     std::vector<std::vector<char>> field;
     Snake snake;
     Apple apple;
     apple.setCoords(getNewPosAppleConsideringPositionSnake(snake));
     bool isWin = false;
+    clear();
+    initField(field);
+    apple.draw(field);
+    snake.draw(field);
+    drawField(field);
+    refresh();
     while (true)
     {
         auto start = std::chrono::high_resolution_clock::now();

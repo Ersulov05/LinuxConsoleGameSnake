@@ -140,7 +140,7 @@ bool GameLoop(Config config)
 {
     initConsoleSettingsWithKeyboard();
     std::vector<std::vector<char>> field;
-    Snake snake;
+    Snake snake(NUMBER_OF_FIELD_ROWS);
     Apple apple;
     apple.setCoords(getNewPosAppleConsideringPositionSnake(snake));
     bool isWin = false;

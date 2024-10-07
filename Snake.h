@@ -2,7 +2,6 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
-#include "Config.h"
 
 class Snake
 {
@@ -15,6 +14,7 @@ private:
     bool isIncrease = false;
 public:
     Snake();
+    Snake(int CountRowsField);
     ~Snake();
     std::pair<int, int> getHead();
     void setHead(std::pair<int, int> coords);

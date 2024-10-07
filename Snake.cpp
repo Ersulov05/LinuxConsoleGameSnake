@@ -1,8 +1,13 @@
 #include "Snake.h"
 
+Snake::Snake(int CountRowsField)
+{
+    snake.push_front(std::pair<int, int>(0, CountRowsField/2));
+    snake.push_front(std::pair<int, int>(1, CountRowsField/2));
+};
+
 Snake::Snake()
 {
-    snake.clear();
     snake.push_front(std::pair<int, int>(0, 0));
     snake.push_front(std::pair<int, int>(1, 0));
 };

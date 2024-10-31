@@ -183,16 +183,18 @@ bool gameLoop(Config config)
         snake.moveHead();
         if (checkCollisionOfHeadSnakeAndApple(snake, apple))
         {
-            if (checkWin(snake)) 
-            {
-                return true;
-            }
+            if (checkWin(snake)) return true;
             apple.setCoords(getNewPosAppleConsideringPositionSnake(snake));
         } 
         else snake.moveTail();
 
         if (checkCollisionOfHeadSnakeAndWall(snake)) {
             processingWallCollisionBehavior(snake, config);
+            if (checkCollisionOfHeadSnakeAndApple(snake, apple))
+            {
+                if (checkWin(snake)) return true;
+                apple.setCoords(getNewPosAppleConsideringPositionSnake(snake));
+            } 
         }
         if (checkCollisionOfHeadSnakeAndWall(snake) || snake.findElement(snake.getHead(), false)) return false;
 

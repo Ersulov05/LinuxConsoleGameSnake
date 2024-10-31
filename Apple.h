@@ -11,5 +11,5 @@ public:
     ~Apple();
     std::pair<int, int> getCoords();
     void setCoords(std::pair<int, int> newCoords);
-    void draw(std::vector<std::vector<char>> &field);
+    void draw(FieldType &field);
 };

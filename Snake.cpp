@@ -101,7 +101,7 @@ void Snake::rotate(Direction direction)
     }
 };
 
-void Snake::draw(std::vector<std::vector<char>> &field)
+void Snake::draw(FieldType &field)
 {
     for (int i = 1; i < snake.size(); i++)
     {

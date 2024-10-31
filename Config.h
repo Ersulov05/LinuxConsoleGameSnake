@@ -3,11 +3,12 @@
 inline const char EMPTY_CELL_SYMBOL = '-';
 inline const int NUMBER_OF_FIELD_ROWS = 15;
 inline const int NUMBER_OF_FIELD_COLUMNS = 15;
-inline const int SPEED = 70;
+inline const int SPEED = 100;
 inline const float FPS = 0.1 * SPEED;
 inline const int ONE_SECOND_IN_MICROSECONDS = 1000000;
 inline const int ONE_SECOND_IN_MILLISECONDS = 1000;
-inline const std::vector<std::vector<char>> EMPTY_FIELD(NUMBER_OF_FIELD_ROWS, std::vector<char>(NUMBER_OF_FIELD_COLUMNS, EMPTY_CELL_SYMBOL));
+using FieldType = std::vector<std::vector<char>>;
+inline const FieldType EMPTY_FIELD(NUMBER_OF_FIELD_ROWS, std::vector<char>(NUMBER_OF_FIELD_COLUMNS, EMPTY_CELL_SYMBOL));
 enum Direction {UP, RIGHT, DOWN, LEFT};
 struct Config
 {

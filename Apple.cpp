@@ -14,7 +14,7 @@ void Apple::setCoords(std::pair<int, int> newCoords)
     coords = newCoords;
 };
 
-void Apple::draw(std::vector<std::vector<char>> &field)
+void Apple::draw(FieldType &field)
 {
     field[coords.second][coords.first] = APPLE_SYMBOL;
 };

@@ -2,6 +2,7 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include "Config.h"
 
 class Snake
 {
@@ -26,5 +27,5 @@ public:
     Direction getCurrentDirection();
     bool findElement(std::pair<int, int> element, bool head = true);
     void rotate(Direction direction);
-    void draw(std::vector<std::vector<char>> &field);
+    void draw(FieldType &field);
 };

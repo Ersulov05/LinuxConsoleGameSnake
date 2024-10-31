@@ -181,22 +181,19 @@ bool gameLoop(Config config)
         auto start = std::chrono::high_resolution_clock::now();
         keyPressHandler(snake);
         snake.moveHead();
-        if (checkCollisionOfHeadSnakeAndApple(snake, apple))
-        {
-            if (checkWin(snake)) return true;
-            apple.setCoords(getNewPosAppleConsideringPositionSnake(snake));
-        } 
-        else snake.moveTail();
 
-        if (checkCollisionOfHeadSnakeAndWall(snake)) {
+        (checkCollisionOfHeadSnakeAndApple(snake, apple))
+            ? apple.setCoords(getNewPosAppleConsideringPositionSnake(snake))
+            : snake.moveTail();
+            
+        if (checkCollisionOfHeadSnakeAndWall(snake)) 
+        {
             processingWallCollisionBehavior(snake, config);
             if (checkCollisionOfHeadSnakeAndApple(snake, apple))
-            {
-                if (checkWin(snake)) return true;
                 apple.setCoords(getNewPosAppleConsideringPositionSnake(snake));
-            } 
         }
         if (checkCollisionOfHeadSnakeAndWall(snake) || snake.findElement(snake.getHead(), false)) return false;
+        if (checkWin(snake)) return true;
 
         gameDraw(field, snake, apple);
         delay(ONE_SECOND_IN_MICROSECONDS/FPS, (std::chrono::high_resolution_clock::now() - start).count()/ONE_SECOND_IN_MILLISECONDS);
